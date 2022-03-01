@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :note_categories
+  resources :product_types
 
   root 'static_pages#home'
 
