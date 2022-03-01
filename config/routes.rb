@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  root 'static_pages#home'
+
   resources :brands
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
