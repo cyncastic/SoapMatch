@@ -1,5 +1,14 @@
-%h2 Brands
+%h2= link_to "Brands", brands_url
 %ul  
 	- @brands.each do |brand|
 		%li= link_to brand.name, brand
 
+%h2= link_to "Note Categories", note_categories_url
+%ul  
+	- @note_categories.each do |note_category|
+		%li= link_to note_category.name, note_category
+
+%h2= link_to "Product Types", product_types_url
+%ul  
+	- @product_types.each do |product_type|
+		%li= link_to product_type.name, product_type
