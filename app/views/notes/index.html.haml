@@ -1,4 +1,4 @@
-%h1 Listing notes
+%h2 Notes
 
 %table
   %thead
@@ -7,18 +7,13 @@
       %th Note category
       %th
       %th
-      %th
 
   %tbody
     - @notes.each do |note|
       %tr
-        %td= note.name
+        %td= link_to note.name, note
         %td= note.note_category.name
-        %td= link_to 'Show', note
         %td= link_to 'Edit', edit_note_path(note)
         %td= link_to 'Delete', note, method: :delete, data: { confirm: 'Are you sure?' }
-
-%br
-
 
 = link_to 'New Note', new_note_path
