@@ -1,4 +1,12 @@
+# == Route Map
+#
+
 Rails.application.routes.draw do
+  resources :product_types
+  resources :products
+  resources :notes
+  resources :note_categories
+  resources :brands
 
   root 'static_pages#home'
 

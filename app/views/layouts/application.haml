@@ -8,4 +8,17 @@
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
     %link{href: "https://cdn.simplecss.org/simple.min.css", rel: "stylesheet"}/
   %body
-    = yield
+    %header
+      %h1 SoapMatch
+      %p soap scents that make sense
+      %nav
+        = link_to 'Brands', brands_path
+        = link_to 'Products', products_path
+        = link_to 'Notes', notes_path
+        = link_to 'Produt Types', product_types_path
+        = link_to 'Note Categories', note_categories_path
+
+    %main
+      = yield
+    %footer
+      %p footer stuff

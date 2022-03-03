@@ -10,5 +10,58 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_03_160747) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_03_181148) do
+  create_table "brands", force: :cascade do |t|
+    t.string "name"
+    t.string "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "note_categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "notes", force: :cascade do |t|
+    t.string "name"
+    t.integer "note_category_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["note_category_id"], name: "index_notes_on_note_category_id"
+  end
+
+  create_table "product_notes", force: :cascade do |t|
+    t.integer "product_id", null: false
+    t.integer "note_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["note_id"], name: "index_product_notes_on_note_id"
+    t.index ["product_id"], name: "index_product_notes_on_product_id"
+  end
+
+  create_table "product_types", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.string "ingredients"
+    t.integer "brand_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "product_type_id", null: false
+    t.index ["brand_id"], name: "index_products_on_brand_id"
+    t.index ["product_type_id"], name: "index_products_on_product_type_id"
+  end
+
+  add_foreign_key "notes", "note_categories"
+  add_foreign_key "product_notes", "notes"
+  add_foreign_key "product_notes", "products"
+  add_foreign_key "products", "brands"
+  add_foreign_key "products", "product_types"
 end

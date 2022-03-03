@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @note.name
+%p
+  %b Note category:
+  = @note.note_category.name
+
+= link_to 'Edit', edit_note_path(@note)
+\|
+= link_to 'Back', notes_path
