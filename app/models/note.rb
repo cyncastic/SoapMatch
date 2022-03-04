@@ -20,5 +20,6 @@ class Note < ApplicationRecord
   belongs_to :note_category
   
   validates :name, presence: true
+  validates :name, uniqueness: true
   validates :note_category_id, presence: true
 end
